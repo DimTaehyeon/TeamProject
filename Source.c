@@ -12,4 +12,4 @@ int test() {
 	printf("Test message\n");
 
 	return 0; //수정사항
-}
+} //음 그거 아닌데..
