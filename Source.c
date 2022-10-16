@@ -1,6 +1,6 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 
-//�ּ��׽�Ʈ
+//주석테스트
 int main() {
 	printf("Welcome teamproject.\n");
 	
