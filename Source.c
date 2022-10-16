@@ -1,10 +1,9 @@
 ﻿#include <stdio.h>
 
-//주석테스트
 int main() {
 	printf("Welcome teamproject.\n");
 	
-	test();
+	test(); //수정사항
 
 	return 0;
 }
@@ -12,5 +11,5 @@ int main() {
 int test() {
 	printf("Test message\n");
 
-	return 0;
+	return 0; //수정사항
 }
