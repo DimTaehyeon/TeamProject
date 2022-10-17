@@ -3,7 +3,7 @@
 int main() {
 	printf("Welcome teamproject.\n");
 	
-	test(); //수정사항
+	test(); 
 
 	return 0;
 }
@@ -11,5 +11,5 @@ int main() {
 int test() {
 	printf("Test message\n");
 
-	return 0; //수정사항
-} //음 그거 아닌데..
+	return 0; 
+}
