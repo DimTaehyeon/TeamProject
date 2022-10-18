@@ -31,12 +31,15 @@ int main(void) {
 int inquiry() { //조회
 	system("cls");
 	printf("이용시설 현황 조회을 선택하셨습니다.\n");
+	Sleep(1000);
+	system("cls");
 	return 0; 
 }
 
 int registeration() { //등록
 	system("cls");
 	printf("이용시설 현황 등록을 선택하셨습니다.\n");
-
+	Sleep(1000);
+	system("cls");
 	return 0;
 }
