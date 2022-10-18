@@ -24,13 +24,13 @@ int main() {
 	return 0;
 }
 
-int inquiry() {
+int inquiry() { //조회
 	printf("Test message\n");
 
 	return 0; 
 }
 
-int registeration() {
+int registeration() { //등록
 	printf("Test message\n");
 
 	return 0;
