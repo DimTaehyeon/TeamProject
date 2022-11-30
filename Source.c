@@ -1,5 +1,5 @@
 ﻿#include <stdio.h>
-#include <time.h> // 세탁기 작동시간은 50분이니 50분 카운트다운 참조링크 https://url.kr/idm58x
+#include <time.h> // 세탁기 작동시간은 50분이니 50분뒤 종료시간 표시 참조링크 https://url.kr/idm58x
 #include <windows.h> 
 #include <conio.h> // 방향키 입력 받는 헤더파일, 참조링크 https://url.kr/8rk6ng, 
 //_getch _kbhit 설명 <= https://url.kr/w5azx8 네이버 블로그
@@ -8,6 +8,7 @@
 #define RIGHT 77
 #define UP 72
 #define DOWN 80
+int floor;
 
 void CursorView() {
 	CONSOLE_CURSOR_INFO cursorInfo = { 0, };
@@ -36,23 +37,22 @@ int main(void) {
 	printf("■                              ■\n");
 	printf("■■■■■■■■■■■■■■■■■\n");
 
-	num = _getch();
-
-	switch (num) {
-	case '1':
-		inquiry();
-		break;
-	case '2':
-		registeration();
-		break;
-	default:
-
-		break;
+	
+	while (1) {
+		num = _getch();
+		switch (num) {
+		case '1':
+			inquiry();
+			break;
+		case '2':
+			registeration();
+			break;
+		default:
+			break;
+		}
 	}
-
 	return 0;
 }
-
 	/*while (1) {
 		if (_kbhit()) {
 			select = _getch();
@@ -71,7 +71,6 @@ int main(void) {
 	}
 	return 0;
 }*/
-
 	int inquiry() { //조회
 	system("cls");
 	printf("이용시설 현황 조회을 선택하셨습니다.\n");
@@ -79,7 +78,12 @@ int main(void) {
 	Sleep(1000);
 	system("cls");
 	
+	printf("현황을 조회하실 층수를 입력하세요.(1~7층)\n");
+	floor = _getch();
+	
+	switch (floor) {
 
+	}
 	return 0; 
 }
 
