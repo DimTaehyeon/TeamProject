@@ -1,9 +1,25 @@
 ﻿#include <stdio.h>
-#include <time.h> // 세탁기 작동시간은 50분이니 50분뒤 종료시간 표시 참조링크 https://url.kr/idm58x
+#include <time.h> // 세탁기 작동시간은 50분이니 종료시간 표시. 참조링크 https://url.kr/idm58x
 #include <windows.h> 
 #include <conio.h> // 방향키 입력 받는 헤더파일, 참조링크 https://url.kr/8rk6ng, 
 //_getch _kbhit 설명 <= https://url.kr/w5azx8 네이버 블로그
 // 총 7층, 세탁기(50분) 3대, 건조기(50분) 1대
+// esc 눌러서 프로그램 종료
+/*	time_t timer;
+    struct tm* t;
+    timer = time(NULL); // 1970년 1월 1일 0시 0분 0초부터 시작하여 현재까지의 초
+    t = localtime(&timer); // 포맷팅을 위해 구조체에 넣기
+
+    printf("유닉스 타임 (Unix Time): %lld 초\n\n", timer);
+    printf("현재 년: %d\n", t->tm_year + 1900);
+    printf("현재 월: %d\n", t->tm_mon + 1);
+    printf("현재 일: %d\n", t->tm_mday);
+    printf("현재 시: %d\n", t->tm_hour);
+    printf("현재 분: %d\n", t->tm_min);
+    printf("현재 초: %d\n", t->tm_sec);
+    printf("현재 요일: %d\n", t->tm_wday); // 일=0, 월=1, 화=2, 수=3, 목=4, 금=5, 토=6
+    printf("올해 몇 번째 날: %d\n", t->tm_yday); // 1월 1일은 0, 1월 2일은 1
+    printf("서머타임 적용 여부: %d\n", t->tm_isdst); // 실시 중이면 양수, 미실시면 0, 실시 정보가 없으면 음수*/
 #define LEFT 75
 #define RIGHT 77
 #define UP 72
@@ -80,19 +96,46 @@ int main(void) {
 	
 	printf("현황을 조회하실 층수를 입력하세요.(1~7층)\n");
 	floor = _getch();
-	
-	switch (floor) {
-	case '1':
-		printf("%d층",floor);
-	case '2':
-		printf("2층");
-	case '3':
-		printf("3층");
+
+	while (1) {
+		switch (floor) {
+		case '1':
+			printf("%c층", floor);
+			Sleep(500);
+			break;
+		case '2':
+			printf("%c층", floor);
+			Sleep(500);
+			break;
+		case '3':
+			printf("%c층", floor);
+			Sleep(500);
+			break;
+		default:
+			break;
+		}
 	}
 	return 0; 
 }
+	int registeration() { //등록
+		time_t timer;
+		struct tm* t;
+		timer = time(NULL); // 1970년 1월 1일 0시 0분 0초부터 시작하여 현재까지의 초
+		t = localtime(&timer); // 포맷팅을 위해 구조체에 넣기
+
+		int A,B,C[4];
+		int B[2] = t->tm_min;
+		system("cls");
+		printf("이용시설 현황 등록을 선택하셨습니다.\n");
+
+		Sleep(1000);
+		system("cls");
 
 
+		return 0;
+	}
+
+	/*
 	┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐
 	│□ □ □             □ │     │□ □ □             ■ │    │□ □ □             □ │     │□ □ □             ■ │
 	├────────────────────┤     ├────────────────────┤    ├────────────────────┤     ├────────────────────┤
@@ -104,13 +147,4 @@ int main(void) {
 	│                    │     │                    │    │                    │     │                    │
 	│                    │     │                    │    │                    │     │                    │
 	└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘
-	int registeration() { //등록
-	system("cls");
-	printf("이용시설 현황 등록을 선택하셨습니다.\n");
-	
-	Sleep(1000);
-	system("cls");
-
-
-	return 0;
-}
+	*/
