@@ -101,7 +101,7 @@ int inquiry() { //조회
 			printf("│                    │     │                    │    │                    │     │                    │\n");
 			printf("│                    │     │                    │    │                    │     │                    │\n");
 			printf("│                    │     │                    │    │                    │     │                    │\n");
-			printf("     %s              %s             %s              %s\n", A_1, A_2, A_3, A_4);
+			printf("     %s              %s              %s              %s\n", A_1, A_2, A_3, A_4);
 			printf("│                    │     │                    │    │                    │     │                    │\n");
 			printf("│                    │     │                    │    │                    │     │                    │\n");
 			printf("│                    │     │                    │    │                    │     │                    │\n");
