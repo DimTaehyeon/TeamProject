@@ -175,8 +175,8 @@ int main(void) {
 					A_B = "사용중";
 					system("cls");
 					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
-					int h = t->tm_hour;
-					int m = t->tm_min + 50;
+					h = t->tm_hour;
+					m = t->tm_min + 50;
 					if (m >= 60) {
 						m -= 60;
 						h += 1;
@@ -188,8 +188,8 @@ int main(void) {
 					A_C = "사용중";
 					system("cls");
 					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
-					int h = t->tm_hour;
-					int m = t->tm_min + 50;
+					h = t->tm_hour;
+					m = t->tm_min + 50;
 					if (m >= 60) {
 						m -= 60;
 						h += 1;
@@ -202,8 +202,8 @@ int main(void) {
 					A_D = "사용중";
 					system("cls");
 					printf("%c번을 선택하셨습니다. 50분뒤에 건조가 완료됩니다.", Userselect);
-					int h = t->tm_hour;
-					int m = t->tm_min + 50;
+					h = t->tm_hour;
+					m = t->tm_min + 50;
 					if (m >= 60) {
 						m -= 60;
 						h += 1;
