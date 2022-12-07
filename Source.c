@@ -91,7 +91,7 @@ int inquiry() { //조회
 	floor = _getch();
 
 	system("cls");
-
+	             
 	while (1) {
 		switch (floor) {
 		case '1':
