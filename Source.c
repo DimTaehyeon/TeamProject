@@ -27,9 +27,13 @@
 #define DOWN 80
 
 int floor, Userselect; //층 입력
-int A_1, A_2, A_3, A_4;
-int B_1, B_2, B_3, B_4;
-int C_1, C_2, C_3, C_4;
+char A_1[30], A_2[30], A_3[30], A_4[30];
+char B_1[30], B_2[30], B_3[30], B_4[30];
+char C_1[30], C_2[30], C_3[30], C_4[30];
+
+char *A_A = "사용가능", *A_B = "사용가능", *A_C = "사용가능", *A_D = "사용가능";
+char *B_A = "사용가능", *B_B = "사용가능", *B_C = "사용가능", *B_D = "사용가능";
+char *C_A = "사용가능", *C_B = "사용가능", *C_C = "사용가능", *C_D = "사용가능";
 
 void CursorView() {
 	CONSOLE_CURSOR_INFO cursorInfo = { 0, };
@@ -43,19 +47,19 @@ int registeration();
 int main(void) {
 	int num; // 숫자 입력
 	CursorView(0);
-	// 방향키로 메뉴 입력을 받는게 좋을 것 같음, 우선 번호입력 / 방향키 입력폼을 두개다 해둠.
-	printf("■■■■■■■■■■■■■■■■■\n");
-	printf("■                              ■\n");
-	printf("■     이용시설 현황 시스템     ■\n");
-	printf("■   (1)세탁기 이용현황 조회    ■\n");
-	printf("■   (2)세탁기 이용현황 등록    ■\n");
-	printf("■                              ■\n");
-	printf("■     번호입력을 통해 선택     ■\n");
-	printf("■                              ■\n");
-	printf("■■■■■■■■■■■■■■■■■\n");
-
-	
 	while (1) {
+		system("cls");
+		// 방향키로 메뉴 입력을 받는게 좋을 것 같음, 우선 번호입력 / 방향키 입력폼을 두개다 해둠.
+		printf("■■■■■■■■■■■■■■■■■\n");
+		printf("■                              ■\n");
+		printf("■     이용시설 현황 시스템     ■\n");
+		printf("■   (1)세탁기 이용현황 조회    ■\n");
+		printf("■   (2)세탁기 이용현황 등록    ■\n");
+		printf("■                              ■\n");
+		printf("■     번호입력을 통해 선택     ■\n");
+		printf("■                              ■\n");
+		printf("■■■■■■■■■■■■■■■■■\n");
+	
 		num = _getch();
 		switch (num) {
 		case '1':
@@ -102,7 +106,8 @@ int main(void) {
 		switch (floor) {
 		case '1':
 			printf("%c층", floor);
-			Sleep(500);
+			printf("%s", A_1);
+			Sleep(5000);
 			break;
 		case '2':
 			printf("%c층", floor);
@@ -139,24 +144,121 @@ int main(void) {
 			switch (floor) {
 			case '1':
 				printf("%c층", floor);
-				printf("┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐");
-				printf("│□ □ □             □ │     │□ □ □             ■ │    │□ □ □             □ │     │□ □ □             ■ │");
-				printf("├────────────────────┤     ├────────────────────┤    ├────────────────────┤     ├────────────────────┤");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("사용가능                       사용가능                      사용가능                        사용가능");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("│                    │     │                    │    │                    │     │                    │");
-				printf("└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘");
-				printf("사용하실 시설의 번호를 입력해주세요(1~4).");
+				printf("┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐\n");
+				printf("│□ □ □             □ │     │□ □ □             ■ │    │□ □ □             □ │     │□ □ □             ■ │\n");
+				printf("├────────────────────┤     ├────────────────────┤    ├────────────────────┤     ├────────────────────┤\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("%s                       %s                      %s                        %s\n",A_A, A_B, A_C, A_D);
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘\n");
+				printf("사용하실 시설의 번호를 입력해주세요(1~4).\n");
 				Userselect = _getch();
-
+				switch (Userselect) {
+				case '1':
+					A_A = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					int h = t->tm_hour;
+					int m = t->tm_min + 50;
+					if (m >= 60) {
+						m -= 60;
+						h += 1;
+					}					
+					sprintf(A_1, "%d시 %d분 종료", h, m);
+					Sleep(500);
+					break;
+				case '2':
+					A_B = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					int h = t->tm_hour;
+					int m = t->tm_min + 50;
+					if (m >= 60) {
+						m -= 60;
+						h += 1;
+					}
+					sprintf(A_2, "%d시 %d분 종료", h, m);
+					Sleep(500);
+					break;
+				case '3':
+					A_C = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					int h = t->tm_hour;
+					int m = t->tm_min + 50;
+					if (m >= 60) {
+						m -= 60;
+						h += 1;
+					}
+					sprintf(A_3, "%d시 %d분 종료", h, m);
+					Sleep(500);
+					break;
+				break;
+				case '4':
+					A_D = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 건조가 완료됩니다.", Userselect);
+					int h = t->tm_hour;
+					int m = t->tm_min + 50;
+					if (m >= 60) {
+						m -= 60;
+						h += 1;
+					}
+					sprintf(A_4, "%d시 %d분 종료", h, m);
+					Sleep(500);
+					break;
+				default:
+					break;
+				}
 				break;
 			case '2':
 				printf("%c층", floor);
-				Sleep(500);
+				printf("┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐\n");
+				printf("│□ □ □             □ │     │□ □ □             ■ │    │□ □ □             □ │     │□ □ □             ■ │\n");
+				printf("├────────────────────┤     ├────────────────────┤    ├────────────────────┤     ├────────────────────┤\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("%s                       %s                      %s                        %s\n", B_A, B_B, B_C, B_D);
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("│                    │     │                    │    │                    │     │                    │\n");
+				printf("└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘\n");
+				printf("사용하실 시설의 번호를 입력해주세요(1~4).\n");
+				Userselect = _getch();
+				switch (Userselect) {
+				case '1':
+					B_A = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					Sleep(500);
+					break;
+				case '2':
+					B_B = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					Sleep(500);
+					break;
+				case '3':
+					B_C = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 세탁이 완료됩니다.", Userselect);
+					Sleep(500);
+					break;
+					break;
+				case '4':
+					B_D = "사용중";
+					system("cls");
+					printf("%c번을 선택하셨습니다. 50분뒤에 건조가 완료됩니다.", Userselect);
+					Sleep(500);
+					break;
+				default:
+					break;
+				}
 				break;
 			case '3':
 				printf("%c층", floor);
@@ -165,11 +267,10 @@ int main(void) {
 			default:
 				break;
 			}
-			return 0;
+			break;
 		}
 
-		return 0;
-	}
+}
 
 	/*
 	┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐
