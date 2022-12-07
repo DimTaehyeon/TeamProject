@@ -1,7 +1,8 @@
-﻿#include <stdio.h>
+﻿#pragma warning(disable:4996)
+#include <stdio.h>
 #include <time.h> // 세탁기 작동시간은 50분이니 종료시간 표시. 참조링크 https://url.kr/idm58x
 #include <windows.h> 
-#include <conio.h> // 방향키 입력 받는 헤더파일, 참조링크 https://url.kr/8rk6ng, 
+#include <conio.h> // 방향키 입력 받는 헤더파일, 참조링크 https://url.kr/8rk6ng,
 //_getch _kbhit 설명 <= https://url.kr/w5azx8 네이버 블로그
 // 총 7층, 세탁기(50분) 3대, 건조기(50분) 1대
 // esc 눌러서 프로그램 종료
@@ -24,7 +25,11 @@
 #define RIGHT 77
 #define UP 72
 #define DOWN 80
-int floor;
+
+int floor, Userselect; //층 입력
+int A_1, A_2, A_3, A_4;
+int B_1, B_2, B_3, B_4;
+int C_1, C_2, C_3, C_4;
 
 void CursorView() {
 	CONSOLE_CURSOR_INFO cursorInfo = { 0, };
@@ -32,15 +37,11 @@ void CursorView() {
 	cursorInfo.bVisible = FALSE; //커서 Visible TRUE(보임) FALSE(숨김)
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 }
-
-void fullscreen() {
-	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
-}
+int inquiry();
+int registeration();
 
 int main(void) {
 	int num; // 숫자 입력
-	char select; // 방향키 입력
-	fullscreen();
 	CursorView(0);
 	// 방향키로 메뉴 입력을 받는게 좋을 것 같음, 우선 번호입력 / 방향키 입력폼을 두개다 해둠.
 	printf("■■■■■■■■■■■■■■■■■\n");
@@ -94,7 +95,7 @@ int main(void) {
 	Sleep(1000);
 	system("cls");
 	
-	printf("현황을 조회하실 층수를 입력하세요.(1~7층)\n");
+	printf("현황을 조회하실 층수를 입력하세요.(1~3층)\n");
 	floor = _getch();
 
 	while (1) {
@@ -123,14 +124,49 @@ int main(void) {
 		timer = time(NULL); // 1970년 1월 1일 0시 0분 0초부터 시작하여 현재까지의 초
 		t = localtime(&timer); // 포맷팅을 위해 구조체에 넣기
 
-		int A,B,C[4];
-		int B[2] = t->tm_min;
+		
+
 		system("cls");
 		printf("이용시설 현황 등록을 선택하셨습니다.\n");
 
 		Sleep(1000);
 		system("cls");
 
+		printf("이용하실 층을 선택해주세요.\n");
+		floor = _getch();
+
+		while (1) {
+			switch (floor) {
+			case '1':
+				printf("%c층", floor);
+				printf("┌────────────────────┐     ┌────────────────────┐    ┌────────────────────┐     ┌────────────────────┐");
+				printf("│□ □ □             □ │     │□ □ □             ■ │    │□ □ □             □ │     │□ □ □             ■ │");
+				printf("├────────────────────┤     ├────────────────────┤    ├────────────────────┤     ├────────────────────┤");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("사용가능                       사용가능                      사용가능                        사용가능");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("│                    │     │                    │    │                    │     │                    │");
+				printf("└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘");
+				printf("사용하실 시설의 번호를 입력해주세요(1~4).");
+				Userselect = _getch();
+
+				break;
+			case '2':
+				printf("%c층", floor);
+				Sleep(500);
+				break;
+			case '3':
+				printf("%c층", floor);
+				Sleep(500);
+				break;
+			default:
+				break;
+			}
+			return 0;
+		}
 
 		return 0;
 	}
@@ -148,3 +184,11 @@ int main(void) {
 	│                    │     │                    │    │                    │     │                    │
 	└────────────────────┘     └────────────────────┘    └────────────────────┘     └────────────────────┘
 	*/
+
+	/*    int h = t->tm_hour;
+	int m = t->tm_min + 50;
+	if (m >= 60) {
+		m -= 60;
+		h += 1;
+	}
+	printf("%d시 %d분 종료", h, m);*/
